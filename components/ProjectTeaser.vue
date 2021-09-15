@@ -6,7 +6,7 @@
       {{ projectContent.year }}
     </p>
     <p class="text-gray-700">
-      {{ projectContent.description }}
+      {{ projectContent.description.content[0].content[0].text }}
     </p>
   </a>
 </template>
