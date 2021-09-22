@@ -17,10 +17,10 @@ export default {
     };
   },
   mounted() {
+    // Storyblok visual input form
     this.$storybridge(
       () => {
         const storyblokInstance = new StoryblokBridge();
-
         storyblokInstance.on(["input", "published", "change"], event => {
           if (event.action == "input") {
             if (event.story.id === this.story.id) {
