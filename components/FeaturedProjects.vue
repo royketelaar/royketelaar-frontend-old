@@ -10,7 +10,7 @@
         class="flex-auto px-8"
         style="min-width: 33%"
       >
-        <project-teaser
+        <ProjectCard
           v-if="project.content"
           :project-content="project.content"
         />

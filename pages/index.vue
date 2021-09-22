@@ -17,17 +17,21 @@ export default {
     };
   },
   mounted() {
-    // Storyblok visual input form
     this.$storybridge(
       () => {
         const storyblokInstance = new StoryblokBridge();
+
+        // Listen to Storyblok's Visual Editor event
         storyblokInstance.on(["input", "published", "change"], event => {
           if (event.action == "input") {
             if (event.story.id === this.story.id) {
               this.story.content = event.story.content;
             }
           } else {
-            window.location.reload();
+            this.$nuxt.$router.go({
+              path: this.$nuxt.$router.currentRoute,
+              force: true
+            });
           }
         });
       },
@@ -37,9 +41,16 @@ export default {
     );
   },
   asyncData(context) {
+    const version =
+      context.query._storyblok || context.isDev ? "draft" : "published";
+    const fullSlug =
+      context.route.path == "/" || context.route.path == ""
+        ? "home"
+        : context.route.path;
+
     return context.app.$storyapi
-      .get("cdn/stories/home", {
-        version: "draft",
+      .get(`cdn/stories/${fullSlug}`, {
+        version: version,
         resolve_relations: "featured-projects.projects"
       })
       .then(res => {

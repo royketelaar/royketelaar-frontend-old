@@ -1,6 +1,6 @@
 <template>
   <a href="#" class="block py-10">
-    <img :src="projectContent.image.filename" class="pb-10" />
+    <img :src="projectContent.image.filename" class="pb-10 h-80 block" />
     <h2 class="pb-6 text-xl">{{ projectContent.name }}</h2>
     <p class="pb-6 text-gray-700 leading-loose">
       {{ projectContent.year }}
