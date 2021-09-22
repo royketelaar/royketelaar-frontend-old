@@ -17,28 +17,28 @@ export default {
     };
   },
   mounted() {
-    this.$storybridge(
-      () => {
-        const storyblokInstance = new StoryblokBridge();
-
-        // Listen to Storyblok's Visual Editor event
-        storyblokInstance.on(["input", "published", "change"], event => {
-          if (event.action == "input") {
-            if (event.story.id === this.story.id) {
-              this.story.content = event.story.content;
-            }
-          } else {
-            this.$nuxt.$router.go({
-              path: this.$nuxt.$router.currentRoute,
-              force: true
-            });
-          }
-        });
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    // this.$storybridge(
+    //   () => {
+    //     const storyblokInstance = new StoryblokBridge();
+    //     // Listen to Storyblok's Visual Editor event
+    //     storyblokInstance.on(["input", "published", "change"], event => {
+    //       if (event.action == "input") {
+    //         if (event.story.id === this.story.id) {
+    //           this.story.content = event.story.content;
+    //         }
+    //       } else {
+    //         window.location.reload();
+    //         this.$nuxt.$router.go({
+    //           path: this.$nuxt.$router.currentRoute,
+    //           force: true
+    //         });
+    //       }
+    //     });
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
   },
   asyncData(context) {
     const version =
@@ -47,7 +47,6 @@ export default {
       context.route.path == "/" || context.route.path == ""
         ? "home"
         : context.route.path;
-
     return context.app.$storyapi
       .get(`cdn/stories/${fullSlug}`, {
         version: version,
