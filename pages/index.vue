@@ -17,6 +17,7 @@ export default {
     };
   },
   mounted() {
+    // Disable for now
     // this.$storybridge(
     //   () => {
     //     const storyblokInstance = new StoryblokBridge();
