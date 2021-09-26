@@ -10,10 +10,7 @@
         class="flex-auto px-8"
         style="min-width: 33%"
       >
-        <ProjectCard
-          v-if="project.content"
-          :project-content="project.content"
-        />
+        <ProjectCard v-if="project" :project="project" />
       </li>
     </ul>
   </div>

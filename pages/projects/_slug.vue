@@ -1,12 +1,5 @@
 <template>
-  <section>
-    <component
-      v-if="story.content.component"
-      :key="story.content._uid"
-      :blok="story.content"
-      :is="story.content.component"
-    />
-  </section>
+  <div v-if="story">{{ story }}</div>
 </template>
 
 <script>
@@ -15,31 +8,6 @@ export default {
     return {
       story: { content: {} }
     };
-  },
-  mounted() {
-    // Disable for now
-    // this.$storybridge(
-    //   () => {
-    //     const storyblokInstance = new StoryblokBridge();
-    //     // Listen to Storyblok's Visual Editor event
-    //     storyblokInstance.on(["input", "published", "change"], event => {
-    //       if (event.action == "input") {
-    //         if (event.story.id === this.story.id) {
-    //           this.story.content = event.story.content;
-    //         }
-    //       } else {
-    //         window.location.reload();
-    //         this.$nuxt.$router.go({
-    //           path: this.$nuxt.$router.currentRoute,
-    //           force: true
-    //         });
-    //       }
-    //     });
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
   },
   asyncData(context) {
     const version =
@@ -75,3 +43,5 @@ export default {
   }
 };
 </script>
+
+<style></style>
