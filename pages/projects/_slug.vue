@@ -1,5 +1,19 @@
 <template>
-  <div v-if="story">{{ story }}</div>
+  <div v-if="story" class="p-4">
+    <a
+      @click="$router.go(-1)"
+      class="hover:underline text-blue-500 cursor-pointer	text-xl mb-4 block"
+      >Back</a
+    >
+    <img :src="story.content.image.filename" class="pb-10 h-80 block" />
+    <h2 class="pb-6 text-xl">{{ story.content.name }}</h2>
+    <p class="pb-6 text-gray-700 leading-loose">
+      {{ story.content.year }}
+    </p>
+    <p class="text-gray-700">
+      {{ story.content.description.content[0].content[0].text }}
+    </p>
+  </div>
 </template>
 
 <script>

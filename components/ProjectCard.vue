@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink v-if="project.content" :to="project.full_slug" class="block py-10">
+  <NuxtLink v-if="project.content" :to="project.full_slug">
     <img :src="project.content.image.filename" class="pb-10 h-80 block" />
     <h2 class="pb-6 text-xl">{{ project.content.name }}</h2>
     <p class="pb-6 text-gray-700 leading-loose">
